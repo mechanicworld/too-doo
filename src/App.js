@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {  useState, useEffect } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Dashboard from './components/Dashboard/Dashboard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function App()  {
+
+  const [userStatus, setUserStatus] = useState(true)
+  const [userInformation, setUserInformation] = useState(
+    {
+      firstName: "",
+      lastName: ""
+    })
+
+
+    return (
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path="/" >          
+              <Home 
+                userInformation={userInformation}
+                setUserInformation={setUserInformation}
+              />
+            </Route>
+            <Route exact path="/dashboard/:username">
+              <Dashboard 
+                userInformation={userInformation}
+                setUserInformation={setUserInformation}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    )
+  
 }
 
-export default App;
+export default App

@@ -1,0 +1,19 @@
+
+
+.avatar {
+  width: 8rem !important;
+  height:8rem !important;
+
+}
+
+.avatarText {
+  font-size: 3rem;
+}
+
+.menu{
+  border-right: 0.1rem solid rgba(94, 97, 97, 0.212);
+}
+
+.list{
+  list-style: none;
+}

@@ -6,3 +6,8 @@
 .cardPosition {
   margin: 1rem;
 }
+
+.inputText {
+  font-size: 0.3rem;
+  margin-bottom: 0.5rem !important ;
+}

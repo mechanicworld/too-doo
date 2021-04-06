@@ -1,7 +1,36 @@
+
 .cardHeaderBg {
   background-color: rgba(50, 30, 89, 0.466) !important; 
 }
 
 .cardPosition {
   margin: 1rem;
+}
+
+.inputText {
+  font-size: 0.3rem;
+  margin-bottom: 0.5rem !important ;
+}
+
+.todoOverlay{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: none;
+  transition: .5s ease;
+  background-color: #393839;
+}
+
+.cardPosition:hover .todoOverlay{
+  opacity: 0.9;
+}
+
+.btnRow{
+  
+  
 }

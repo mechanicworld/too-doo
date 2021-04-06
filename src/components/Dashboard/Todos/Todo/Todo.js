@@ -1,18 +1,22 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, ListGroup} from 'react-bootstrap'
 import style from './Todo.module.css'
 
-function Todo() {
+function Todo({ data: { todoTitle, todoCategory, todoList } }) {
   return (
     <>
-      <Card className={` ${style.cardPosition} `} style={{ width: '18rem'}}>
-                
-        
+      <Card className={` ${style.cardPosition} `} style={{ width: '18rem' }}>
+
+
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>          
+          <Card.Title> {todoTitle} </Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            {todoCategory}
+            
+            <ListGroup variant="flush">
+              {todoList.map(item => <ListGroup.Item>{item.todoText}</ListGroup.Item>)}
+            </ListGroup>
+            
           </Card.Text>
 
         </Card.Body>

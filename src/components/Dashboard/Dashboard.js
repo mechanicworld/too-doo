@@ -7,7 +7,7 @@ import avatar from '../../assets/avatar.png'
 
 function Dashboard({ userInformation, setUserInformation }) {
 
-
+ 
 
   const avatarHandler = () => {
 

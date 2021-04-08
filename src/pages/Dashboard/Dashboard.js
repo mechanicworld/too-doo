@@ -1,25 +1,32 @@
 
 import React, { useEffect, useState } from 'react'
-import Todos from './Todos/Todos'
-import Category from './Category/Category'
+import Todos from '../../components/Todos/Todos'
+import Category from '../../components/Category/Category'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import styles from './Dashboard.module.css'
 import avatar from '../../assets/avatar.png'
 
 function Dashboard({ userInformation, setUserInformation }) {
 
-  const [todosList, setTodosList] = useState([
-  ])
+  const [todosList, setTodosList] = useState([])
 
   const [filterStatus, setFilterStatus] = useState("all")
 
-  const avatarHandler = () => {
+  const [categoryList , setCategoryList] = useState([])
 
-    
+  const [checkedList, setCheckedList] = useState([])
+
+  const fetchCategory = () => {
+    let categoryList = todosList.map(item => item.todoCategory)
+    let uniqueCategoryList = [...new Set(categoryList)]
+      
+    return uniqueCategoryList
   }
-  useEffect(() => {
+  
+  useEffect(() => {   
+    setCategoryList(fetchCategory())
     
-  }, [])
+  }, [todosList])
 
   return (
     <>
@@ -40,12 +47,25 @@ function Dashboard({ userInformation, setUserInformation }) {
             </Row>
             <Row>
               <Col>
-              <Category filterStatu={filterStatus} setFilterStatus={setFilterStatus} todosList={todosList} setTodosList={setTodosList} />
+              <Category 
+                filterStatu={filterStatus} 
+                setFilterStatus={setFilterStatus} 
+                todosList={todosList} 
+                setTodosList={setTodosList} 
+                categoryList={categoryList}
+                checkedList={checkedList}
+                setCheckedList={setCheckedList}
+              />
               </Col>
             </Row>
           </Col>
           <Col lg={9}>            
-            <Todos filterStatu={filterStatus}   todosList={todosList} setTodosList={setTodosList}/>              
+            <Todos 
+              filterStatu={filterStatus}   
+              todosList={todosList} 
+              setTodosList={setTodosList}
+              checkedList={checkedList}              
+              />
           </Col>
         </Row>
         

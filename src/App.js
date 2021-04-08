@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Dashboard from './components/Dashboard/Dashboard';
+import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App()  {

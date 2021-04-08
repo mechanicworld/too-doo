@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Card, ListGroup, InputGroup, FormControl, Button, Form, Container, Row, Col, FormText } from 'react-bootstrap'
+import { v4 as uuidv4 } from 'uuid';
 
 import style from './Todo.module.css'
 
@@ -24,7 +25,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
         return index !== todosIndex
       })
       setTodosList(updatedTodosList)
-      console.log({ ...data })
+      
     }
   }
 
@@ -58,21 +59,20 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
   }
 
   const updateTodosList = () => {
-    console.log("yes")
 
-    setTodosList(todosList.map((item,index) => {
-      if(index === todosId){
+    let todoListUpdated = 
+    todosList.map((item) => {
+      if(item.todosId === todosId){
         return {...item, todoTitle:editedTodoTitle, todoCategory:editedTodoCategory, todoList:todos }
       } else {
         return item
       }
-    }))
+    })
+    setTodosList(todoListUpdated)
     editStatusHandler()
   }
 
-  useEffect(() => {
-    
-  }, [todos])
+
   return (
     <> {editStatus ?
       <Card className={` ${style.cardPosition} `} style={{ width: '20rem' }}>
@@ -111,7 +111,10 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
                 placeholder="Category (ex: Reading, Coding)"
                 size="sm"
                 value={editedTodoCategory}
-                onChange={(e) => setEditedTodoCategory(e.target.value)}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setEditedTodoCategory(e.target.value)
+                }}
               />
             </Form.Group>
           </Card.Title>
@@ -130,7 +133,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
               onChange={(e) => {
                 setTodo(
                   {
-                    todoId: todoList.length + 1,
+                    todoId: uuidv4() ,
                     completed: false,
                     todoText: e.target.value
                   }
@@ -155,7 +158,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
             <InputGroup className="mb-1" key={index} size="sm">
               <InputGroup.Prepend size="sm" >
                 <InputGroup.Checkbox
-                  checked={item.completed}
+                  defaultChecked={item.completed}
                   onClick={(e) => completeHandeler(e, index)}
                 />
               </InputGroup.Prepend>
@@ -193,11 +196,11 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
           {todos.map((item, index) =>
             <InputGroup key={index} size="sm" className="mb-3">
               <InputGroup.Prepend>
-                <InputGroup.Checkbox disabled checked={item.completed} aria-label="Checkbox for following text input" />
+                <InputGroup.Checkbox disabled defaultChecked={item.completed} aria-label="Checkbox for following text input" />
               </InputGroup.Prepend>
               <FormControl
                 aria-label="Text input with checkbox"
-                value={item.todoText}
+                defaultValue={item.todoText}
               />
             </InputGroup>
           )}

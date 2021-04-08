@@ -103,10 +103,11 @@ function CreateTodo({ todosList, setTodosList }) {
               <Button disabled={(!todo.todoText || !category || !title)} onClick={addTodo} variant="dark" size="sm">Add</Button>
             </Form.Group>
             <Card.Text>
+              
 
             </Card.Text>
-            <ListGroup variant="flush">
-              {todos.map((item) => <ListGroup.Item key={item.todoId}>{item.todoText}</ListGroup.Item>)}
+            <ListGroup  variant="flush">
+              {todos.map((item, index) => <ListGroup.Item size="sm" key={index}>{item.todoText}</ListGroup.Item>)}
             </ListGroup>
 
           </Card.Body>

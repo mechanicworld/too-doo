@@ -9,20 +9,20 @@ import {
 
 import homePageImg from '../../assets/home-page.jpg'
 
-function Home({userInformation, setUserInformation}) {
-  let history = useHistory()  
+function Home({ userInformation, setUserInformation }) {
+  let history = useHistory()
 
-  const  enterHandler =  (e) => {
+  const enterHandler = (e) => {
     e.preventDefault()
     localStorage.setItem("user", JSON.stringify(userInformation))
 
-    if(userInformation.firstName !== "" && userInformation.lastName !== ""){
+    if (userInformation.firstName !== "" && userInformation.lastName !== "") {
       history.push(`dashboard/${userInformation.firstName + userInformation.lastName}`)
-    }else {
+    } else {
       alert("Please fill the fisrtname and surname")
 
     }
-    
+
   }
 
   return (
@@ -40,7 +40,6 @@ function Home({userInformation, setUserInformation}) {
                   <Form.Control
                     type="text"
                     placeholder="First Name"
-                    value={userInformation.firstName}
                     onChange={(e) => setUserInformation({ ...userInformation, firstName: e.target.value })}
                   />
                 </Form.Group>
@@ -49,13 +48,9 @@ function Home({userInformation, setUserInformation}) {
                   <Form.Control
                     type="text"
                     placeholder="Last Name"
-                    value={userInformation.lastName}
                     onChange={(e) => setUserInformation({ ...userInformation, lastName: e.target.value })}
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group> */}
                 <Button onClick={enterHandler} className={`my-5`} variant="primary" type="submit" block >
                   Start
               </Button>

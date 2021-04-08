@@ -1,20 +1,24 @@
 
 import React, { useEffect, useState } from 'react'
 import Todos from './Todos/Todos'
+import Category from './Category/Category'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import styles from './Dashboard.module.css'
 import avatar from '../../assets/avatar.png'
 
 function Dashboard({ userInformation, setUserInformation }) {
 
- 
+  const [todosList, setTodosList] = useState([
+  ])
+
+  const [filterStatus, setFilterStatus] = useState("all")
 
   const avatarHandler = () => {
 
-    console.log(JSON.parse(localStorage.getItem("user")).firstName)
+    
   }
   useEffect(() => {
-    avatarHandler()
+    
   }, [])
 
   return (
@@ -36,17 +40,12 @@ function Dashboard({ userInformation, setUserInformation }) {
             </Row>
             <Row>
               <Col>
-                <ul className={styles.list}>
-                  <li>asdf</li>
-                  <li>asdf</li>
-                  <li>asdf</li>
-                  <li>asdf</li>
-                </ul>
+              <Category filterStatu={filterStatus} setFilterStatus={setFilterStatus} todosList={todosList} setTodosList={setTodosList} />
               </Col>
             </Row>
           </Col>
           <Col lg={9}>            
-            <Todos />              
+            <Todos filterStatu={filterStatus}   todosList={todosList} setTodosList={setTodosList}/>              
           </Col>
         </Row>
         

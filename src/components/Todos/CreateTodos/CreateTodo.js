@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { Card, InputGroup, FormControl, Button, FormLabel, Form, ListGroup } from 'react-bootstrap'
+import { Card, InputGroup, FormControl, Button, Container, Form } from 'react-bootstrap'
 import style from './CreateTodo.module.css'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -68,7 +68,7 @@ function CreateTodo({ todosList, setTodosList }) {
   return (
     <>
       {createTodo ?
-        <Card className={` ${style.cardPosition} `} style={{ width: '18rem' }}>
+        <Card className={` ${style.cardPosition} `} style={{ width: '20rem', height:'25rem' }}>
           <Card.Body>
             <Button
               className="float-right mb-3"
@@ -129,6 +129,7 @@ function CreateTodo({ todosList, setTodosList }) {
               
 
             </Card.Text>
+            <Container  className={style.scroll}>
             {todos.map((item, index) => 
             <InputGroup className="mb-1" key={index} size="sm">
               <InputGroup.Prepend size="sm" >
@@ -154,13 +155,15 @@ function CreateTodo({ todosList, setTodosList }) {
               </InputGroup.Append>
             </InputGroup>
             )}
+            </Container>
+            
 
           </Card.Body>
           <Button disabled={(!todos || !category || !title)} onClick={postTodo} variant="dark" >Create ToDo</Button>
 
         </Card>
         :
-        <Card className={` ${style.cardPosition} `} style={{ width: '18rem' }}>
+        <Card className={` ${style.cardPosition} `} style={{ width: '20rem',height:'25rem' }}>
           <Card.Body className='d-flex justify-content-center align-items-center'>
             <Card.Text >
               <span className="text-center h1 ">

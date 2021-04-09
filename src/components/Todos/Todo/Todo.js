@@ -75,7 +75,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
 
   return (
     <> {editStatus ?
-      <Card className={` ${style.cardPosition} `} style={{ width: '20rem' }}>
+      <Card className={` ${style.cardPosition} `} style={{  width: '20rem', height:'25rem'}}>
         <Card.Body>
           <Button
             className="float-right mb-3"
@@ -120,10 +120,8 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
           </Card.Title>
 
           {/* Todo Input */}
-          <InputGroup size="sm" className="mb-2">
-            <InputGroup.Prepend size="sm" >
-              <InputGroup.Checkbox disabled variant="danger" />
-            </InputGroup.Prepend>
+          <InputGroup size="sm" className="mb-3">
+            
             <FormControl
               id="todoText"
               aria-label="Text input "
@@ -154,6 +152,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
 
           {/* Todo List  */}
 
+          <Container className={style.scroll}>
           {todos.map((item, index) =>
             <InputGroup className="mb-1" key={index} size="sm">
               <InputGroup.Prepend size="sm" >
@@ -179,6 +178,9 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
               </InputGroup.Append>
             </InputGroup>
           )}
+          </Container>
+
+          
 
         </Card.Body>
         
@@ -187,12 +189,13 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
         </Button>
       </Card>
       :
-      <Card className={` ${style.cardPosition} `} style={{ width: '18rem' }}>
+      <Card className={` ${style.cardPosition} `} style={{  width: '20rem', height:'25rem' }}>
         <Card.Body id="todoCard">
           <Card.Title> {editedTodoTitle} </Card.Title>
           <Card.Text>
             {editedTodoCategory}
           </Card.Text>
+          <Container className={style.scrollEdit}>
           {todos.map((item, index) =>
             <InputGroup key={index} size="sm" className="mb-3">
               <InputGroup.Prepend>
@@ -204,6 +207,9 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
               />
             </InputGroup>
           )}
+
+          </Container>
+          
         </Card.Body>
         <Card.Body className={`${style.todoOverlay} d-flex justify-content-center `}>
           <Container className="d-flex justify-content-center align-content-center">

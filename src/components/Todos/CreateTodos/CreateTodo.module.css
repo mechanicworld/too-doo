@@ -11,3 +11,8 @@
   font-size: 0.3rem;
   margin-bottom: 0.5rem !important ;
 }
+
+.scroll {
+  overflow-y: scroll;
+  max-height: 7rem;
+}

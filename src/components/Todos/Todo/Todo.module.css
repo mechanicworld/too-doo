@@ -30,7 +30,12 @@
   opacity: 0.9;
 }
 
-.btnRow{
-  
-  
+.scrollEdit {
+  overflow-y: hidden;
+  max-height: 16rem;
+}
+
+.scroll {
+  overflow-y: scroll;
+  max-height: 7rem;
 }

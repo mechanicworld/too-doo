@@ -25,6 +25,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
         return index !== todosIndex
       })
       setTodosList(updatedTodosList)
+      editStatusHandler()
       
     }
   }
@@ -75,8 +76,8 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
 
   return (
     <> {editStatus ?
-      <Card className={` ${style.cardPosition} `} style={{  width: '20rem', height:'25rem'}}>
-        <Card.Body>
+      <Card className={` ${style.cardPosition} `} style={{  width: '18rem', height:'25rem'}}>
+        <Card.Body style={{padding:'0.8rem'}}>
           <Button
             className="float-right mb-3"
             size="sm"
@@ -183,16 +184,17 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
           
 
         </Card.Body>
+          <Button  variant="warning" onClick={updateTodosList}>
+            Update
+          </Button>
         
-        <Button  variant="warning" onClick={updateTodosList}>
-          Update
-        </Button>
+        
       </Card>
       :
-      <Card className={` ${style.cardPosition} `} style={{  width: '20rem', height:'25rem' }}>
-        <Card.Body id="todoCard">
-          <Card.Title> {editedTodoTitle} </Card.Title>
-          <Card.Text>
+      <Card className={` ${style.cardPosition} `} style={{  width: '18rem', height:'25rem' }}>
+        <Card.Body  style={{padding:'0.8rem'}}>
+          <Card.Title style={{fontSize:'1.8rem', textAlign:'center'}} > {editedTodoTitle} </Card.Title>
+          <Card.Text className="h6 mb-3 text-center">
             {editedTodoCategory}
           </Card.Text>
           <Container className={style.scrollEdit}>
@@ -211,7 +213,7 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
           </Container>
           
         </Card.Body>
-        <Card.Body className={`${style.todoOverlay} d-flex justify-content-center `}>
+        <Card.Body style={{padding:'0.8rem'}} className={`${style.todoOverlay} d-flex justify-content-center `}>
           <Container className="d-flex justify-content-center align-content-center">
             <Row className={`${style.btnRow} d-flex justify-content-center align-content-center`}>
               <Col>

@@ -68,8 +68,8 @@ function CreateTodo({ todosList, setTodosList }) {
   return (
     <>
       {createTodo ?
-        <Card className={` ${style.cardPosition} `} style={{ width: '20rem', height:'25rem' }}>
-          <Card.Body>
+        <Card className={` ${style.cardPosition} `} style={{ width: '18rem', height:'25rem' }}>
+          <Card.Body style={{padding:'0.8rem'}}>
             <Button
               className="float-right mb-3"
               size="sm"
@@ -163,10 +163,10 @@ function CreateTodo({ todosList, setTodosList }) {
 
         </Card>
         :
-        <Card className={` ${style.cardPosition} `} style={{ width: '20rem',height:'25rem' }}>
-          <Card.Body className='d-flex justify-content-center align-items-center'>
+        <Card className={` ${style.cardPosition} `} style={{ width: '18rem',height:'25rem' }}>
+          <Card.Body className='d-flex justify-content-center align-items-center' style={{padding:'0.8rem'}}>
             <Card.Text >
-              <span className="text-center h1 ">
+              <span className="text-center h1 text-black-50 ">
                 New Todo
               </span>
             </Card.Text>

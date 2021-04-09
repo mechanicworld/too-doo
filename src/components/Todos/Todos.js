@@ -9,28 +9,37 @@ function Todos({ todosList, setTodosList, checkedList }) {
 
   return (
     <>
-      <Container className="d-flex  ">
-        <CreateTodo
-          todosList={todosList}
-          setTodosList={setTodosList}
-        />
-        {todosList.map((item, index) => {
-          
-
-          if (checkedList.length === 0 || checkedList.includes(item.todoCategory) ) {
-            return (
-            <Todo
-              key={index}
-              todosIndex={index}
-              data={item}
-              todosList={todosList}
-              setTodosList={setTodosList}
-            />)
+      <Container fluid >
+        <Row className="d-flex">
+          {todosList.map((item, index) => {
+            if (checkedList.length === 0 || checkedList.includes(item.todoCategory)) {
+              return (
+                <Todo
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  lg={4}
+                  xl={4}
+                  key={index}
+                  todosIndex={index}
+                  data={item}
+                  todosList={todosList}
+                  setTodosList={setTodosList}
+                  
+                />)
+            }
           }
-        }
+          )}
+          <CreateTodo
+            xs={12}
+            sm={6}
+            md={6}
+            lg={4}
+            xl={4}
+            todosList={todosList}
+            setTodosList={setTodosList}/>
+        </Row>
 
-
-        )}
       </Container>
     </>
   )

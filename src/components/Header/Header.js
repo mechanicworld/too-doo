@@ -8,7 +8,7 @@ import { Navbar } from 'react-bootstrap'
 function Header() {
   return (
 
-    <Navbar className={styles.headerBg} >
+    <Navbar sticky="top"  className={styles.headerBg} >
       <Navbar.Brand className="p-0">
         <img
           alt=""

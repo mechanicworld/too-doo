@@ -25,7 +25,7 @@ function App()  {
     return (
       <Router>
         <div className={style.background}>
-          <Header />
+          
           <Switch>
             <Route exact path="/" >          
               <Home 

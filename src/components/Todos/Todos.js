@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import Todo from './Todo/Todo'
 import CreateTodo from './CreateTodos/CreateTodo'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 
 function Todos({ todosList, setTodosList, checkedList }) {
 
@@ -28,6 +28,7 @@ function Todos({ todosList, setTodosList, checkedList }) {
                   
                 />)
             }
+            return null
           }
           )}
           <CreateTodo

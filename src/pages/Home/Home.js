@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
 import style from "./Home.module.css";
 
 import {
-  BrowserRouter as Router,
-  Redirect,
-  useHistory,
+  
+  useHistory
 } from "react-router-dom";
 
 import homePageImg from "../../assets/home-page.jpg";
-import tooDoo from "../../assets/tooDoo.png";
+
 
 function Home({ userInformation, setUserInformation }) {
   let history = useHistory();

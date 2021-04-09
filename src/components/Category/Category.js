@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { InputGroup, ListGroup } from 'react-bootstrap'
+import React from 'react'
+import { InputGroup } from 'react-bootstrap'
 
 function Category({ categoryList, checkedList, setCheckedList }) {
 

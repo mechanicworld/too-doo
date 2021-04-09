@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Card, ListGroup, InputGroup, FormControl, Button, Form, Container, Row, Col, FormText } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Card, InputGroup, FormControl, Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { v4 as uuidv4 } from 'uuid';
 
 import style from './Todo.module.css'
@@ -113,7 +113,6 @@ function Todo({ data: { todoTitle, todoCategory, todoList, todosId }, data, todo
                 size="sm"
                 value={editedTodoCategory}
                 onChange={(e) => {
-                  console.log(e.target.value)
                   setEditedTodoCategory(e.target.value)
                 }}
               />

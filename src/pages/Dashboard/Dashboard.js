@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Todos from "../../components/Todos/Todos";
 import Category from "../../components/Category/Category";
-import { Container, Row, Col, Image, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, Image} from "react-bootstrap";
 import styles from "./Dashboard.module.css";
 import avatar from "../../assets/avatar.png";
 import Header from '../../components/Header/Header'
@@ -15,14 +15,16 @@ function Dashboard({ userInformation, setUserInformation }) {
 
   const [checkedList, setCheckedList] = useState([]);
 
-  const fetchCategory = () => {
-    let categoryList = todosList.map((item) => item.todoCategory);
-    let uniqueCategoryList = [...new Set(categoryList)];
-
-    return uniqueCategoryList;
-  };
+  
 
   useEffect(() => {
+    const fetchCategory = () => {
+      let categoryList = todosList.map((item) => item.todoCategory);
+      let uniqueCategoryList = [...new Set(categoryList)];
+  
+      return uniqueCategoryList;
+    };
+    
     setCategoryList(fetchCategory());
   }, [todosList]);
 

@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import style from './App.module.css'
 
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
@@ -23,7 +24,7 @@ function App()  {
 
     return (
       <Router>
-        <div>
+        <div className={style.background}>
           <Header />
           <Switch>
             <Route exact path="/" >          

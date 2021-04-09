@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, InputGroup, FormControl, Button, FormLabel, Form, ListGroup } from 'react-bootstrap'
 import style from './CreateTodo.module.css'
+import { v4 as uuidv4 } from 'uuid';
 
 function CreateTodo({ todosList, setTodosList }) {
 
@@ -37,10 +38,32 @@ function CreateTodo({ todosList, setTodosList }) {
   const addTodo = () => {
     setTodos([...todos, todo])
     setTodo({})
-
-    
-
   }
+
+  const deleteCheckpointHandler = (e, deleteIndex) => {    
+    setTodos(todos.filter((item, index) => {
+      return index !== deleteIndex
+    }))
+  }
+
+  const updateCkeckPointHandler = (e, updatedIndex) => {
+    setTodos(todos.map((item, index) => {
+      if(index === updatedIndex){
+        return { ...item, todoText: e.target.value}
+      }
+      return item
+    }))
+  }
+
+  const completeHandeler = (e, updatedIndex) => {
+    setTodos(todos.map((item, index) => {
+      if (index === updatedIndex) {
+        return { ...item, completed: e.target.checked }
+      }
+      return item
+    }))
+  }
+
 
   return (
     <>
@@ -93,7 +116,7 @@ function CreateTodo({ todosList, setTodosList }) {
                 onChange={(e) => {
                   setTodo(
                     {
-                      todoId: todos.length + 1,
+                      todoId: uuidv4(),
                       completed: false,
                       todoText: e.target.value
                     }
@@ -106,9 +129,31 @@ function CreateTodo({ todosList, setTodosList }) {
               
 
             </Card.Text>
-            <ListGroup  variant="flush">
-              {todos.map((item, index) => <ListGroup.Item size="sm" key={index}>{item.todoText}</ListGroup.Item>)}
-            </ListGroup>
+            {todos.map((item, index) => 
+            <InputGroup className="mb-1" key={index} size="sm">
+              <InputGroup.Prepend size="sm" >
+                <InputGroup.Checkbox
+                  defaultChecked={item.completed}
+                  onClick={(e) => completeHandeler(e, index)}
+                />
+              </InputGroup.Prepend>
+              <FormControl
+                defaultValue={item.todoText}
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                onChange={(e) => updateCkeckPointHandler(e, index)}
+              />
+              <InputGroup.Append>
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={ (e) => deleteCheckpointHandler(e, index)}
+                >
+                  -
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+            )}
 
           </Card.Body>
           <Button disabled={(!todos || !category || !title)} onClick={postTodo} variant="dark" >Create ToDo</Button>
